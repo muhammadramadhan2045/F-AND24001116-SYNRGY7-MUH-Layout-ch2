@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_calculate_tip_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/app_name"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/save_data"
+        android:src="@drawable/ic_bookmark"
+        app:layout_constraintBottom_toBottomOf="@id/tv_calculate_tip_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_bill_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_calculate_tip_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tie_bill_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_bill_amount"
+            android:inputType="numberDecimal" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/tv_tip_percentage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/choose_tip_percentage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_bill_amount" />
+
+    <Button
+        android:id="@+id/btn_10_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/md_theme_light_inverseOnSurface"
+        android:text="@string/percentage_10"
+        app:layout_constraintEnd_toStartOf="@id/btn_15_percent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_tip_percentage" />
+
+    <Button
+        android:id="@+id/btn_15_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/md_theme_light_inverseOnSurface"
+        android:text="@string/percentage_15"
+        app:layout_constraintStart_toEndOf="@id/btn_10_percent"
+        app:layout_constraintTop_toBottomOf="@id/tv_tip_percentage" />
+
+    <Button
+        android:id="@+id/btn_20_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/md_theme_light_inverseOnSurface"
+        android:text="@string/percentage_20"
+        app:layout_constraintStart_toEndOf="@id/btn_15_percent"
+        app:layout_constraintTop_toBottomOf="@id/tv_tip_percentage" />
+
+    <TextView
+        android:id="@+id/tv_split_by"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/split_by"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_10_percent" />
+
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slider_split"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:stepSize="1"
+        android:value="4"
+        android:valueFrom="1"
+        android:valueTo="10"
+        app:layout_constraintEnd_toEndOf="@id/tv_split_by"
+        app:layout_constraintStart_toStartOf="@id/tv_split_by"
+        app:layout_constraintTop_toBottomOf="@id/tv_split_by" />
+
+
+    <TextView
+        android:id="@+id/tv_rounding_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/rounding_amount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/slider_split" />
+
+    <Button
+        android:id="@+id/btn_round_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/md_theme_light_inverseOnSurface"
+        android:text="@string/round_no"
+        android:textColor="@color/md_theme_light_primary"
+        app:layout_constraintEnd_toStartOf="@id/btn_round_up"
+        app:layout_constraintStart_toStartOf="@id/tv_rounding_amount"
+        app:layout_constraintTop_toBottomOf="@id/tv_rounding_amount" />
+
+    <Button
+        android:id="@+id/btn_round_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/round_up"
+        app:layout_constraintStart_toEndOf="@id/btn_round_no"
+        app:layout_constraintTop_toBottomOf="@id/tv_rounding_amount" />
+
+    <Button
+        android:id="@+id/btn_round_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/md_theme_light_inverseOnSurface"
+        android:text="@string/round_down"
+        android:textColor="@color/md_theme_light_primary"
+        app:layout_constraintStart_toEndOf="@id/btn_round_up"
+        app:layout_constraintTop_toBottomOf="@id/tv_rounding_amount" />
+
+
+    <include
+        android:id="@+id/result_card"
+        layout="@layout/result_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_round_no" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

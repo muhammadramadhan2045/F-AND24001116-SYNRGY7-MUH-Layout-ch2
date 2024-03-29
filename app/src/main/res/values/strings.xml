@@ -17,5 +17,8 @@
     <string name="total_per_peson">Rp 105.000</string>
     <string name="total_amount">Rp 420.000</string>
     <string name="total">Total</string>
-    <string name="save_data">Save data</string>
+    <string name="language_setting">Language Setting</string>
+    <string name="calculate">Calculate</string>
+    <string name="reset_data">Reset Data</string>
+    <string name="payment">Payment</string>
 </resources>

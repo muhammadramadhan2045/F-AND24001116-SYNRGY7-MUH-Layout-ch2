@@ -1,6 +1,8 @@
 package com.example.mychallenge2
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -30,19 +32,53 @@ class MainActivity : AppCompatActivity() {
         chooseTip()
         splitByPerson()
         roundingAmount()
+        setupActionSetting()
+        calculateTip()
 
+
+        resetCalculator()
+    }
+
+    private fun resetCalculator() {
+        binding.fabReset.setOnClickListener {
+            binding.resultCard.root.visibility = android.view.View.GONE
+            binding.tieBillAmount.setText("")
+            binding.sliderSplit.value = 1f
+            binding.tvSplitBy.text = buildString {
+                append(getText(R.string.split_by).toString())
+                append(" ")
+                append("1")
+            }
+            binding.btn10Percent.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
+            binding.btn15Percent.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
+            binding.btn20Percent.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
+            binding.btnRoundNo.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
+            binding.btnRoundYes.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
+        }
+    }
+
+    private fun calculateTip() {
+        binding.btnCalculate.setOnClickListener {
+            binding.resultCard.root.visibility = android.view.View.VISIBLE
+        }
+    }
+
+    private fun setupActionSetting() {
+        binding.btnSetting.setOnClickListener {
+            startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+        }
     }
 
     private fun roundingAmount() {
         binding.btnRoundNo.setOnClickListener {
             binding.btnRoundNo.setBackgroundColor(getColor(R.color.md_theme_light_primaryContainer))
-            binding.btnRoundUp.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
+            binding.btnRoundYes.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
             roundAmount = "No"
 
         }
 
-        binding.btnRoundUp.setOnClickListener {
-            binding.btnRoundUp.setBackgroundColor(getColor(R.color.md_theme_light_primaryContainer))
+        binding.btnRoundYes.setOnClickListener {
+            binding.btnRoundYes.setBackgroundColor(getColor(R.color.md_theme_light_primaryContainer))
             binding.btnRoundNo.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
             roundAmount = "Yes"
         }
@@ -82,5 +118,11 @@ class MainActivity : AppCompatActivity() {
             binding.btn10Percent.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
             binding.btn15Percent.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
         }
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

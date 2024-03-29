@@ -5,10 +5,9 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginTop="16dp"
-    app:cardCornerRadius="8dp"
     android:backgroundTint="@color/md_theme_light_primary"
+    app:cardCornerRadius="8dp"
     app:cardElevation="8dp">
-
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,26 +15,36 @@
         android:layout_height="match_parent"
         android:layout_margin="16dp">
 
+        <ImageView
+            android:id="@+id/iv_payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/payment"
+            android:src="@drawable/ic_payment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
         <TextView
             android:id="@+id/tv_base"
-            android:textColor="@color/md_theme_light_onPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:text="@string/base_amount"
+            android:textColor="@color/md_theme_light_onPrimary"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_payment"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_amount"
-            android:textColor="@color/md_theme_light_onPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:text="@string/amount"
+            android:textColor="@color/md_theme_light_onPrimary"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -44,12 +53,12 @@
             android:id="@+id/tv_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/md_theme_light_onPrimary"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:text="@string/tip_text"
+            android:textColor="@color/md_theme_light_onPrimary"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_payment"
             app:layout_constraintTop_toBottomOf="@id/tv_base" />
 
         <TextView
@@ -57,9 +66,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:textColor="@color/md_theme_light_onPrimary"
             android:layout_marginEnd="5dp"
             android:text="@string/tip_amount"
+            android:textColor="@color/md_theme_light_onPrimary"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_amount" />
@@ -70,10 +79,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/md_theme_light_onPrimary"
             android:text="@string/per_person"
+            android:textColor="@color/md_theme_light_onPrimary"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_payment"
             app:layout_constraintTop_toBottomOf="@id/tv_tip" />
 
         <TextView
@@ -89,15 +98,14 @@
             app:layout_constraintTop_toBottomOf="@id/tv_tip_amount" />
 
 
-
-
         <com.google.android.material.divider.MaterialDivider
-            android:layout_width="match_parent"
+            android:id="@+id/divider"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             app:dividerColor="#A1AEB1"
             app:dividerThickness="1dp"
-            android:id="@+id/divider"
+            app:layout_constraintStart_toEndOf="@id/iv_payment"
             app:layout_constraintTop_toBottomOf="@id/tv_per_person" />
 
         <TextView
@@ -105,16 +113,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:textColor="@color/md_theme_light_onPrimary"
             android:text="@string/total"
+            android:textColor="@color/md_theme_light_onPrimary"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_payment"
             app:layout_constraintTop_toBottomOf="@id/divider" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+
             android:text="@string/total_amount"
             android:textColor="@color/md_theme_light_onPrimary"
             android:textSize="16sp"
@@ -122,6 +131,7 @@
             app:layout_constraintTop_toBottomOf="@id/divider" />
 
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.cardview.widget.CardView>

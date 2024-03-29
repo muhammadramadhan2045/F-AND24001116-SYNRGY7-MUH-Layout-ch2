@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kalkulator Tip</string>
+    <string name="enter_bill_amount">Masukan Jumlah Tagihan</string>
+    <string name="choose_tip_percentage">Pilih Tip</string>
+    <string name="percentage_10">10%</string>
+    <string name="percentage_15">15%</string>
+    <string name="percentage_20">20%</string>
+    <string name="split_by">Dibagi per</string>
+    <string name="rounding_amount">Jumlah Pembulatan</string>
+    <string name="round_no">Tidak</string>
+    <string name="base_amount">Basis</string>
+    <string name="amount">Rp. 365.000</string>
+    <string name="tip_text">Tip</string>
+    <string name="tip_amount">Rp 54.750</string>
+    <string name="per_person">Per orang</string>
+    <string name="total_per_peson">Rp 105.000</string>
+    <string name="total_amount">Rp 420.000</string>
+    <string name="total">Total</string>
+    <string name="language_setting">Pengaturan bahasa</string>
+    <string name="round_yes">Ya</string>
+    <string name="calculate">Hitung</string>
+    <string name="reset_data">Reset Data</string>
+    <string name="payment">Payment</string>
+</resources>

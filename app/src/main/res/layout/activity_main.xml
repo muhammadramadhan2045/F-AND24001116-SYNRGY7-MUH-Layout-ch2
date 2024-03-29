@@ -14,20 +14,21 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/app_name"
+        android:textAppearance="?attr/textAppearanceLabelLarge"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ImageButton
+    <ImageView
+        android:id="@+id/btn_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/save_data"
-        android:src="@drawable/ic_bookmark"
+        android:contentDescription="@string/language_setting"
+        android:src="@drawable/ic_settings"
         app:layout_constraintBottom_toBottomOf="@id/tv_calculate_tip_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -66,35 +67,44 @@
 
     <Button
         android:id="@+id/btn_10_percent"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
         android:backgroundTint="@color/md_theme_light_inverseOnSurface"
         android:text="@string/percentage_10"
+        android:textAppearance="?attr/textAppearanceLabelMedium"
+        android:textColor="@color/md_theme_light_primary"
         app:layout_constraintEnd_toStartOf="@id/btn_15_percent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_tip_percentage"
         app:layout_constraintTop_toBottomOf="@id/tv_tip_percentage" />
 
     <Button
         android:id="@+id/btn_15_percent"
+        style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:backgroundTint="@color/md_theme_light_inverseOnSurface"
         android:text="@string/percentage_15"
+        android:textAppearance="?attr/textAppearanceLabelMedium"
+        android:textColor="@color/md_theme_light_primary"
         app:layout_constraintStart_toEndOf="@id/btn_10_percent"
         app:layout_constraintTop_toBottomOf="@id/tv_tip_percentage" />
 
     <Button
         android:id="@+id/btn_20_percent"
+        style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
         android:backgroundTint="@color/md_theme_light_inverseOnSurface"
+        android:layout_marginTop="5dp"
         android:text="@string/percentage_20"
+        android:textAppearance="?attr/textAppearanceLabelMedium"
+        android:textColor="@color/md_theme_light_primary"
         app:layout_constraintStart_toEndOf="@id/btn_15_percent"
         app:layout_constraintTop_toBottomOf="@id/tv_tip_percentage" />
 
@@ -116,7 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:stepSize="1"
-        android:value="4"
+        android:value="1"
         android:valueFrom="1"
         android:valueTo="10"
         app:layout_constraintEnd_toEndOf="@id/tv_split_by"
@@ -137,28 +147,50 @@
 
     <Button
         android:id="@+id/btn_round_no"
+        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
         android:backgroundTint="@color/md_theme_light_inverseOnSurface"
         android:text="@string/round_no"
+        android:textAppearance="?attr/textAppearanceLabelMedium"
         android:textColor="@color/md_theme_light_primary"
-        app:layout_constraintEnd_toStartOf="@id/btn_round_up"
+        app:icon="@drawable/ic_no"
+        app:layout_constraintEnd_toStartOf="@id/btn_round_yes"
         app:layout_constraintStart_toStartOf="@id/tv_rounding_amount"
         app:layout_constraintTop_toBottomOf="@id/tv_rounding_amount" />
 
     <Button
-        android:id="@+id/btn_round_up"
+        android:id="@+id/btn_round_yes"
+        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        style="@style/Widget.MaterialComponents.Button"
         android:layout_marginTop="5dp"
+        android:backgroundTint="@color/md_theme_light_inverseOnSurface"
         android:text="@string/round_yes"
+        android:textAppearance="?attr/textAppearanceLabelMedium"
+        android:textColor="@color/md_theme_light_primary"
+        app:icon="@drawable/ic_plus"
         app:layout_constraintStart_toEndOf="@id/btn_round_no"
         app:layout_constraintTop_toBottomOf="@id/tv_rounding_amount" />
 
+
+
+    <Button
+        android:id="@+id/btn_calculate"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/md_theme_light_primary"
+        android:text="@string/calculate"
+        android:textAppearance="?attr/textAppearanceButton"
+        android:textColor="@color/md_theme_light_onPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_round_yes" />
 
 
     <include
@@ -166,11 +198,25 @@
         layout="@layout/result_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="30dp"
+        android:layout_margin="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_round_no" />
+        app:layout_constraintBottom_toTopOf="@id/fab_reset"
+        app:layout_constraintTop_toBottomOf="@id/btn_calculate" />
 
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_reset"
+        android:layout_gravity="bottom|end"
+        app:rippleColor="@color/md_theme_light_onPrimary"
+        app:backgroundTint="@color/md_theme_light_primary"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/reset_data" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

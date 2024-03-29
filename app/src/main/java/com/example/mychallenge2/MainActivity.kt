@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.addTextChangedListener
 import com.example.mychallenge2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -14,8 +15,9 @@ class MainActivity : AppCompatActivity() {
     private val binding get() = _binding!!
 
     private var tipPercent: Int = 0
-    private  var splitBy:Int =0
-    private lateinit var roundAmount: String
+    private var total: Double = 0.0
+    private var splitBy: Int = 0
+    private var roundAmount: String = "No"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,16 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+
+
+        binding.tieBillAmount.addTextChangedListener {
+            total = if (it.toString().isEmpty()) {
+                0.0
+            } else {
+                it.toString().toDouble()
+            }
         }
 
 
@@ -42,23 +54,38 @@ class MainActivity : AppCompatActivity() {
     private fun resetCalculator() {
         binding.fabReset.setOnClickListener {
             binding.resultCard.root.visibility = android.view.View.GONE
-            binding.tieBillAmount.setText("")
             binding.sliderSplit.value = 1f
-            binding.tvSplitBy.text = buildString {
-                append(getText(R.string.split_by).toString())
-                append(" ")
-                append("1")
-            }
+            binding.tieBillAmount.text?.clear()
+            binding.tvSplitBy.text = getText(R.string.split_by).toString()
             binding.btn10Percent.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
             binding.btn15Percent.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
             binding.btn20Percent.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
-            binding.btnRoundNo.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
+            binding.btnRoundNo.setBackgroundColor(getColor(R.color.md_theme_light_primaryContainer))
             binding.btnRoundYes.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
+            tipPercent = 0
+            total = 0.0
+            splitBy = 0
+            roundAmount = "No"
+
         }
     }
 
     private fun calculateTip() {
         binding.btnCalculate.setOnClickListener {
+            var tipAmount = total * tipPercent / 100
+            var totalAmount = total + tipAmount
+            var totalPerPerson = totalAmount / splitBy
+
+            if (roundAmount == "Yes") {
+                totalPerPerson = totalPerPerson.toInt().toDouble()
+                tipAmount = tipAmount.toInt().toDouble()
+                totalAmount = totalAmount.toInt().toDouble()
+            }
+
+            binding.resultCard.tvAmount.text = total.toString()
+            binding.resultCard.tvTipAmount.text = tipAmount.toString()
+            binding.resultCard.tvTotalPerPerson.text = totalPerPerson.toString()
+            binding.resultCard.tvTotalAmount.text = totalAmount.toString()
             binding.resultCard.root.visibility = android.view.View.VISIBLE
         }
     }
@@ -94,6 +121,7 @@ class MainActivity : AppCompatActivity() {
                 append(value.toInt().toString())
             }
             splitBy = value.toInt()
+
         }
     }
 
@@ -118,6 +146,7 @@ class MainActivity : AppCompatActivity() {
             binding.btn10Percent.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
             binding.btn15Percent.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
         }
+
     }
 
 

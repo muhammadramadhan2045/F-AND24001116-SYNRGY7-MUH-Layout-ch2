@@ -196,6 +196,7 @@
     <include
         android:id="@+id/result_card"
         layout="@layout/result_card"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"

@@ -5,7 +5,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.widget.addTextChangedListener
 import com.example.mychallenge2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -38,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         binding.btnRoundNo.setOnClickListener {
             binding.btnRoundNo.setBackgroundColor(getColor(R.color.md_theme_light_primaryContainer))
             binding.btnRoundUp.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
-            binding.btnRoundDown.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
             roundAmount = "No"
 
         }
@@ -46,21 +44,14 @@ class MainActivity : AppCompatActivity() {
         binding.btnRoundUp.setOnClickListener {
             binding.btnRoundUp.setBackgroundColor(getColor(R.color.md_theme_light_primaryContainer))
             binding.btnRoundNo.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
-            binding.btnRoundDown.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
-            roundAmount = "Up"
+            roundAmount = "Yes"
         }
 
-        binding.btnRoundDown.setOnClickListener {
-            binding.btnRoundDown.setBackgroundColor(getColor(R.color.md_theme_light_primaryContainer))
-            binding.btnRoundNo.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
-            binding.btnRoundUp.setBackgroundColor(getColor(R.color.md_theme_light_inverseOnSurface))
-            roundAmount = "Down"
-        }
 
     }
 
     private fun splitByPerson() {
-        binding.sliderSplit.addOnChangeListener { slider, value, fromUser ->
+        binding.sliderSplit.addOnChangeListener { _, value, _ ->
             binding.tvSplitBy.text = buildString {
                 append(getText(R.string.split_by).toString())
                 append(" ")

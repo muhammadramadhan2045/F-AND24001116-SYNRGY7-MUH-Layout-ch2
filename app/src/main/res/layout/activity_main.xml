@@ -153,22 +153,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_marginTop="5dp"
-        android:text="@string/round_up"
+        android:text="@string/round_yes"
         app:layout_constraintStart_toEndOf="@id/btn_round_no"
         app:layout_constraintTop_toBottomOf="@id/tv_rounding_amount" />
 
-    <Button
-        android:id="@+id/btn_round_down"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:backgroundTint="@color/md_theme_light_inverseOnSurface"
-        android:text="@string/round_down"
-        android:textColor="@color/md_theme_light_primary"
-        app:layout_constraintStart_toEndOf="@id/btn_round_up"
-        app:layout_constraintTop_toBottomOf="@id/tv_rounding_amount" />
 
 
     <include

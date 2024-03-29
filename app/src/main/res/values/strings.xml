@@ -7,8 +7,7 @@
     <string name="percentage_20">20%</string>
     <string name="split_by">Split by</string>
     <string name="rounding_amount">Rounding Amount</string>
-    <string name="round_down">Down</string>
-    <string name="round_up">Up</string>
+    <string name="round_yes">Yes</string>
     <string name="round_no">No</string>
     <string name="base_amount">Base</string>
     <string name="amount">Rp 365.000</string>
